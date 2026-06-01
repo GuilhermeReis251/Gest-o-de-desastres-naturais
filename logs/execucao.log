@@ -1,0 +1,8 @@
+=== Log iniciado em 2026-06-01 19:42:29 ===
+
+[2026-06-01 19:42:29] [INFO ] === Sistema de Monitoramento de Desastres Naturais iniciado ===
+[2026-06-01 19:42:30] [INFO ] Base carregada: 500 eventos
+[2026-06-01 19:42:30] [INFO ] Estruturas inicializadas: Pilha, Fila, Lista Ligada
+[2026-06-01 19:42:30] [INFO ] Merge Sort concluído: 500 eventos
+[2026-06-01 19:42:30] [INFO ] Entrando no menu principal
+[2026-06-01 19:43:26] [INFO ] Tabela de eventos exibida
