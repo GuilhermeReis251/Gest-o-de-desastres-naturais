@@ -1,15 +1,6 @@
-"""
-modules/ordenacao.py
-====================
-Algoritmos de ordenação:
-  - Merge Sort  — O(n log n), estável, principal
-  - Quick Sort  — O(n log n) médio, alternativo
-  - Bubble Sort — O(n²), demonstrativo
-"""
 
 
 def _val(item, chave):
-    """Extrai valor numérico ou string para comparação."""
     try:
         v = item.get(chave, 0) or 0
         return float(v)
@@ -17,10 +8,8 @@ def _val(item, chave):
         return str(item.get(chave, ""))
 
 
-# ── Merge Sort ────────────────────────────────────────────
 
 def merge_sort(lista, chave="mag", reverso=True):
-    """Merge Sort recursivo — O(n log n)."""
     if len(lista) <= 1:
         return lista
     meio = len(lista) // 2
@@ -43,10 +32,8 @@ def _merge(esq, dir, chave, reverso):
     return resultado
 
 
-# ── Quick Sort ────────────────────────────────────────────
 
 def quick_sort(lista, chave="mag", reverso=True):
-    """Quick Sort recursivo — O(n log n) médio."""
     if len(lista) <= 1:
         return lista
     pivo = _val(lista[len(lista) // 2], chave)
@@ -61,10 +48,8 @@ def quick_sort(lista, chave="mag", reverso=True):
     return quick_sort(menores, chave, reverso) + iguais + quick_sort(maiores, chave, reverso)
 
 
-# ── Bubble Sort ───────────────────────────────────────────
 
 def bubble_sort(lista, chave="mag", reverso=True):
-    """Bubble Sort — O(n²), incluído para fins demonstrativos."""
     arr = lista[:]
     n = len(arr)
     for i in range(n):

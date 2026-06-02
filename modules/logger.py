@@ -1,9 +1,3 @@
-"""
-modules/logger.py
-=================
-Logger simples com gravação em arquivo e saída no terminal.
-"""
-
 import os
 from datetime import datetime
 

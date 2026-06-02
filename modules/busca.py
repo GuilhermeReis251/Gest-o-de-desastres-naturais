@@ -1,19 +1,5 @@
-"""
-modules/busca.py
-================
-Algoritmos de busca:
-  - Busca Binária  -> por magnitude (lista ordenada)
-  - Busca Linear   -> por local, país, nível de risco, período
-"""
-
-
-# ── Busca Binária ─────────────────────────────────────────
-
 def busca_binaria_magnitude(lista_ordenada, mag_alvo, tolerancia=0.3):
-    """
-    Busca Binária em lista ordenada por magnitude (decrescente).
-    Retorna o evento com magnitude mais próxima ao alvo.
-    """
+
     if not lista_ordenada:
         return None, None
 
@@ -35,7 +21,7 @@ def busca_binaria_magnitude(lista_ordenada, mag_alvo, tolerancia=0.3):
         if mag == mag_alvo:
             return meio, lista_ordenada[meio]
         elif mag > mag_alvo:
-            esq = meio + 1   # decrescente: maior está à esquerda
+            esq = meio + 1   
         else:
             dir = meio - 1
 
@@ -45,10 +31,7 @@ def busca_binaria_magnitude(lista_ordenada, mag_alvo, tolerancia=0.3):
 
 
 def busca_binaria_range(lista_ordenada, mag_min, mag_max):
-    """
-    Retorna todos os eventos com magnitude entre mag_min e mag_max.
-    Lista deve estar ordenada por magnitude decrescente.
-    """
+
     resultado = []
     n = len(lista_ordenada)
     inicio = _limite_superior(lista_ordenada, mag_max)
@@ -80,25 +63,18 @@ def _limite_superior(lista, mag_max):
     return res
 
 
-# ── Busca Linear ──────────────────────────────────────────
-
 def busca_linear_local(lista, termo):
-    """Busca linear por texto no campo 'place' — O(n)."""
     alvo = termo.strip().lower()
     return [e for e in lista if alvo in str(e.get("place", "")).lower()]
 
 
 def busca_linear_nivel(lista, nivel):
-    """
-    Busca linear por nível de risco — O(n).
-    Níveis: critico, alto, moderado, baixo
-    """
+
     alvo = nivel.strip().lower()
     return [e for e in lista if str(e.get("nivel_risco", "")).lower() == alvo]
 
 
 def busca_linear_periodo(lista, data_inicio, data_fim):
-    """Busca linear por intervalo de datas (YYYY-MM-DD) — O(n)."""
     resultado = []
     for e in lista:
         data = str(e.get("time", ""))[:10]
@@ -108,7 +84,6 @@ def busca_linear_periodo(lista, data_inicio, data_fim):
 
 
 def busca_linear_profundidade(lista, prof_min, prof_max):
-    """Busca linear por profundidade em km — O(n)."""
     resultado = []
     for e in lista:
         try:

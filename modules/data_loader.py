@@ -1,12 +1,3 @@
-"""
-modules/data_loader.py
-======================
-Carregamento de dados de terremotos.
-
-Fontes:
-  1. USGS Earthquake Hazards Program — API pública (JSON → CSV)
-  2. Dataset sintético realista (fallback offline)
-"""
 
 import csv
 import json
@@ -20,8 +11,7 @@ try:
 except ImportError:
     HAS_URLLIB = False
 
-# ── USGS API ──────────────────────────────────────────────────────────────────
-# Últimos 30 dias, magnitude ≥ 2.5, mundo todo
+
 USGS_URL = (
     "https://earthquake.usgs.gov/fdsnws/event/1/query"
     "?format=geojson&starttime={inicio}&endtime={fim}"
@@ -34,10 +24,8 @@ COLUNAS = [
     "sig", "net", "nivel_risco"
 ]
 
-# ── Classificação de risco ────────────────────────────────────────────────────
 
 def _nivel_risco(mag, depth, tsunami):
-    """Classifica nível de risco com base em magnitude, profundidade e tsunami."""
     mag = float(mag or 0)
     depth = float(depth or 0)
     tsunami = int(tsunami or 0)
@@ -52,10 +40,8 @@ def _nivel_risco(mag, depth, tsunami):
         return "baixo"
 
 
-# ── Download USGS ─────────────────────────────────────────────────────────────
 
 def baixar_dados_usgs(caminho_destino):
-    """Baixa dados da API USGS e salva como CSV."""
     if not HAS_URLLIB:
         raise RuntimeError("urllib não disponível.")
 
@@ -108,7 +94,6 @@ def baixar_dados_usgs(caminho_destino):
     print(f"     ✔ CSV salvo: {caminho_destino}")
 
 
-# ── Carregamento CSV ──────────────────────────────────────────────────────────
 
 def carregar_dados_csv(caminho):
     """Lê CSV e retorna lista de dicionários normalizados."""
@@ -141,7 +126,6 @@ def _normalizar(linha):
     return e
 
 
-# ── Dataset de exemplo ────────────────────────────────────────────────────────
 
 REGIOES = [
     ("Anel de Fogo — Japão",      35.6, 139.6),
@@ -177,7 +161,6 @@ def gerar_dataset_exemplo(caminho, n=400):
             minutes=random.randint(0, 59)
         )).strftime("%Y-%m-%dT%H:%M:%S")
 
-        # Magnitudes com distribuição realista (mais eventos pequenos)
         mag = round(random.choices(
             [random.uniform(2.5, 3.9),
              random.uniform(4.0, 5.4),

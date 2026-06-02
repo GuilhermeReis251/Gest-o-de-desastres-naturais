@@ -1,18 +1,3 @@
-"""
-modules/estruturas.py
-=====================
-Implementação das estruturas de dados obrigatórias:
-  - Pilha  (Stack)        -> LIFO
-  - Fila   (Queue)        -> FIFO
-  - Lista Ligada Simples  -> encadeamento por ponteiros
-"""
-
-
-# ══════════════════════════════════════════════════════════
-#  PILHA (Stack) — LIFO
-#  Uso: histórico de alertas críticos de desastres
-# ══════════════════════════════════════════════════════════
-
 class NoPilha:
     def __init__(self, dado):
         self.dado = dado
@@ -20,10 +5,7 @@ class NoPilha:
 
 
 class Pilha:
-    """
-    Pilha com lista encadeada.
-    Operações: empilhar (push) e desempilhar (pop) — O(1).
-    """
+    
 
     def __init__(self):
         self._topo = None
@@ -61,13 +43,8 @@ class Pilha:
 
     def __repr__(self):
         return f"Pilha(tamanho={self._tamanho}, topo={self.topo()})"
-
-
-# ══════════════════════════════════════════════════════════
-#  FILA (Queue) — FIFO
-#  Uso: eventos aguardando triagem de risco
-# ══════════════════════════════════════════════════════════
-
+    
+    
 class NoFila:
     def __init__(self, dado):
         self.dado = dado
@@ -75,11 +52,7 @@ class NoFila:
 
 
 class Fila:
-    """
-    Fila com lista encadeada (cabeça + cauda).
-    Inserção na cauda, remoção na cabeça — O(1).
-    """
-
+  
     def __init__(self):
         self._cabeca = None
         self._cauda = None
@@ -124,11 +97,6 @@ class Fila:
         return f"Fila(tamanho={self._tamanho}, frente={self.frente()})"
 
 
-# ══════════════════════════════════════════════════════════
-#  LISTA LIGADA SIMPLES
-#  Uso: regiões sísmicas monitoradas
-# ══════════════════════════════════════════════════════════
-
 class NoLista:
     def __init__(self, dado):
         self.dado = dado
@@ -136,16 +104,12 @@ class NoLista:
 
 
 class ListaLigada:
-    """
-    Lista ligada simples com inserção, remoção e busca.
-    """
-
+ 
     def __init__(self):
         self._cabeca = None
         self._tamanho = 0
 
     def inserir(self, dado):
-        """Insere ao final — O(n)."""
         no = NoLista(dado)
         if self._cabeca is None:
             self._cabeca = no
@@ -157,14 +121,12 @@ class ListaLigada:
         self._tamanho += 1
 
     def inserir_inicio(self, dado):
-        """Insere no início — O(1)."""
         no = NoLista(dado)
         no.proximo = self._cabeca
         self._cabeca = no
         self._tamanho += 1
 
     def remover(self, campo, valor):
-        """Remove primeiro nó onde dado[campo] == valor — O(n)."""
         anterior, atual = None, self._cabeca
         while atual:
             if isinstance(atual.dado, dict) and atual.dado.get(campo) == valor:
@@ -178,7 +140,6 @@ class ListaLigada:
         return False
 
     def buscar(self, campo, valor):
-        """Busca linear — O(n)."""
         atual = self._cabeca
         while atual:
             if isinstance(atual.dado, dict) and atual.dado.get(campo) == valor:

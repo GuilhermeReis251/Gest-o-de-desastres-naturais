@@ -1,20 +1,3 @@
-"""
-Sistema de Monitoramento de Desastres Naturais e Gestão de Riscos
-=================================================================
-Fonte dos dados: USGS Earthquake Hazards Program
-API: https://earthquake.usgs.gov/fdsnws/event/1/
-
-Estruturas de Dados implementadas:
-  - Pilha (Stack)       -> histórico de alertas críticos
-  - Fila  (Queue)       -> fila de eventos aguardando triagem
-  - Lista Ligada        -> lista de regiões monitoradas
-
-Algoritmos implementados:
-  - Merge Sort          -> ordenação por magnitude / profundidade / data
-  - Quick Sort          -> alternativo
-  - Busca Binária       -> busca por magnitude
-  - Busca Linear        -> busca por local, país, nível de risco
-"""
 
 import os
 import sys
@@ -37,7 +20,6 @@ def main():
     print("       Estruturas de Dados — Global Solution 2025")
     print("═" * 64)
 
-    # ── Carrega dados ──────────────────────────────────────────────
     print("\n[1/4] Carregando base de dados de terremotos (USGS)...")
     caminho_csv = "data/terremotos.csv"
 
@@ -59,7 +41,6 @@ def main():
         print(f"     ✘ Erro: {e}")
         sys.exit(1)
 
-    # ── Inicializa estruturas ──────────────────────────────────────
     print("\n[2/4] Inicializando estruturas de dados...")
 
     pilha_alertas     = Pilha()
@@ -83,7 +64,6 @@ def main():
     print("     ✔ Fila de triagem criada.")
     print("     ✔ Lista ligada de regiões criada.")
 
-    # ── Ordenação inicial ──────────────────────────────────────────
     print("\n[3/4] Ordenando eventos por magnitude (Merge Sort)...")
     try:
         eventos_ordenados = merge_sort(eventos, chave="mag", reverso=True)
@@ -93,7 +73,6 @@ def main():
         log.erro(f"Erro na ordenação: {e}")
         eventos_ordenados = eventos
 
-    # ── Menu ───────────────────────────────────────────────────────
     print("\n[4/4] Sistema pronto!\n")
     log.info("Entrando no menu principal")
 

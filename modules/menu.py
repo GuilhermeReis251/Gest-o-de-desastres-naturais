@@ -1,8 +1,3 @@
-"""
-modules/menu.py
-===============
-Interface de terminal interativa do sistema de desastres.
-"""
 
 from modules.busca import (
     busca_binaria_magnitude, busca_binaria_range,
@@ -15,7 +10,6 @@ from modules.relatorio import gerar_relatorio, exibir_tabela, exibir_mapa_risco
 
 def exibir_menu_principal(eventos_originais, eventos_ordenados,
                           pilha_alertas, fila_triagem, lista_regioes, log):
-    """Loop principal do menu."""
     eventos_atuais = eventos_ordenados
 
     while True:
@@ -80,7 +74,6 @@ def _cabecalho():
     print("─" * 64)
 
 
-# ── Sub-menus ─────────────────────────────────────────────────────────────────
 
 def _visualizar(eventos):
     try:
@@ -260,7 +253,6 @@ def _estruturas(eventos, pilha, fila, lista, log):
 
 
 def _triar_fila(fila, pilha, log):
-    """Processa eventos da fila e classifica o nível de risco."""
     print(f"\n  Eventos na fila: {fila.tamanho()}")
     if fila.vazia():
         print("  Fila vazia.")
@@ -292,7 +284,6 @@ def _triar_fila(fila, pilha, log):
 
 
 def _painel_risco(eventos):
-    """Painel de gestão de riscos com recomendações."""
     print("\n" + "═" * 64)
     print("  🛡️   PAINEL DE GESTÃO DE RISCOS")
     print("═" * 64)

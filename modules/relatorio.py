@@ -1,13 +1,7 @@
-"""
-modules/relatorio.py
-====================
-Relatórios, tabelas e mapa ASCII de risco sísmico.
-"""
 
 from collections import Counter
 
 
-# ── Tabela de eventos ─────────────────────────────────────────────────────────
 
 def exibir_tabela(eventos, limite=20):
     """Exibe lista de eventos em tabela formatada."""
@@ -34,10 +28,8 @@ def exibir_tabela(eventos, limite=20):
     print()
 
 
-# ── Relatório geral ───────────────────────────────────────────────────────────
 
 def gerar_relatorio(eventos, pilha, fila, lista_regioes):
-    """Relatório estatístico completo."""
     print("\n" + "═" * 64)
     print("  📊  RELATÓRIO GERAL — DESASTRES NATURAIS")
     print("═" * 64)
@@ -57,7 +49,6 @@ def gerar_relatorio(eventos, pilha, fila, lista_regioes):
     print(f"  Profundidade média      : {sum(depths)/total:.1f} km")
     print(f"  Eventos com risco tsunami: {tsunamis}")
 
-    # Por nível de risco
     print("\n  ── Distribuição por Nível de Risco ─────────────────────")
     cont_risco = Counter(str(e.get("nivel_risco", "?")) for e in eventos)
     ordem = ["critico", "alto", "moderado", "baixo"]
@@ -68,29 +59,24 @@ def gerar_relatorio(eventos, pilha, fila, lista_regioes):
         barra = "█" * int(pct / 3)
         print(f"  {icones.get(nivel,'')} {nivel:<10} {barra:<25} {qtd:>4} ({pct:.1f}%)")
 
-    # Top locais
     print("\n  ── Top 8 Locais com Mais Eventos ────────────────────────")
     locais = []
     for e in eventos:
         lugar = str(e.get("place", ""))
-        # Pega só a parte após "km de "
         if " de " in lugar:
             lugar = lugar.split(" de ", 1)[-1]
         locais.append(lugar[:35])
     for local, qtd in Counter(locais).most_common(8):
         print(f"    {local:<35} {qtd:>3} eventos")
 
-    # Pilha
     print(f"\n  ── Pilha de Alertas ─────────────────────────────────────")
     print(f"  Alertas registrados: {pilha.tamanho()}")
     if not pilha.vazia():
         print(f"  Último alerta: {pilha.topo()}")
 
-    # Fila
     print(f"\n  ── Fila de Triagem ──────────────────────────────────────")
     print(f"  Eventos aguardando triagem: {fila.tamanho()}")
 
-    # Regiões
     print(f"\n  ── Regiões Monitoradas (Lista Ligada) ───────────────────")
     for r in lista_regioes.listar():
         status = "✔ ATIVA" if r.get("ativa") else "✘ inativa"
@@ -99,17 +85,12 @@ def gerar_relatorio(eventos, pilha, fila, lista_regioes):
     print("\n" + "═" * 64)
 
 
-# ── Mapa ASCII de risco ───────────────────────────────────────────────────────
 
 def exibir_mapa_risco(eventos):
-    """
-    Exibe mapa ASCII mundial esquemático com focos de risco.
-    """
     print("\n" + "═" * 64)
     print("  🗺️   MAPA DE RISCO SÍSMICO GLOBAL (esquemático)")
     print("═" * 64)
 
-    # Conta eventos críticos/altos por região
     regioes_risco = {
         "Japão/Pacífico NW":  {"lat": (30, 45),  "lon": (130, 150)},
         "Chile/América S.":   {"lat": (-55,-15),  "lon": (-80, -65)},
