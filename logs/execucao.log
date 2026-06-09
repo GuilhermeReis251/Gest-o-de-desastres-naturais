@@ -1,11 +1,16 @@
-=== Log iniciado em 2026-06-01 19:42:29 ===
+=== Log iniciado em 2026-06-08 23:42:07 ===
 
-[2026-06-01 19:42:29] [INFO ] === Sistema de Monitoramento de Desastres Naturais iniciado ===
-[2026-06-01 19:42:30] [INFO ] Base carregada: 500 eventos
-[2026-06-01 19:42:30] [INFO ] Estruturas inicializadas: Pilha, Fila, Lista Ligada
-[2026-06-01 19:42:30] [INFO ] Merge Sort concluído: 500 eventos
-[2026-06-01 19:42:30] [INFO ] Entrando no menu principal
-[2026-06-01 19:43:26] [INFO ] Tabela de eventos exibida
-[2026-06-01 22:32:25] [INFO ] Tabela de eventos exibida
-[2026-06-01 22:32:40] [INFO ] Relatório geral gerado
-[2026-06-01 22:32:56] [INFO ] === Sistema encerrado normalmente ===
+[2026-06-08 23:42:07] [INFO ] === Sistema de Monitoramento de Desastres Naturais iniciado ===
+[2026-06-08 23:42:07] [INFO ] Base carregada: 500 eventos
+[2026-06-08 23:42:07] [INFO ] Estruturas inicializadas: Pilha, Fila, Lista Ligada
+[2026-06-08 23:42:07] [INFO ] Merge Sort concluído: 500 eventos
+[2026-06-08 23:42:07] [INFO ] Entrando no menu principal
+[2026-06-08 23:42:21] [INFO ] Tabela de eventos exibida
+[2026-06-08 23:43:04] [INFO ] Busca Binária range M[6.0-6.4]: 8 resultados
+[2026-06-08 23:43:26] [INFO ] Merge Sort por depth executado
+[2026-06-08 23:44:01] [INFO ] Alerta empilhado: cuidado, terremoto proximo!
+[2026-06-08 23:44:09] [INFO ] Relatório geral gerado
+[2026-06-08 23:45:00] [INFO ] Mapa de risco exibido
+[2026-06-08 23:45:23] [INFO ] Triagem: 5 eventos, 0 críticos
+[2026-06-08 23:45:31] [INFO ] Painel de risco exibido
+[2026-06-08 23:49:03] [INFO ] === Sistema encerrado normalmente ===

@@ -65,7 +65,7 @@ def _cabecalho():
     print("  [1] Visualizar eventos (tabela)")
     print("  [2] Buscar eventos")
     print("  [3] Ordenar eventos")
-    print("  [4] Demonstrar estruturas de dados")
+    print("  [4] Estruturas de eventos")
     print("  [5] Relatório geral")
     print("  [6] Mapa de risco global")
     print("  [7] Processar fila de triagem")
@@ -85,12 +85,12 @@ def _visualizar(eventos):
 
 def _busca(originais, ordenados, pilha, log):
     print("\n  ── BUSCA ───────────────────────────────────────────────")
-    print("  [1] Busca Binária — por magnitude exata")
-    print("  [2] Busca Binária — por intervalo de magnitude")
-    print("  [3] Busca Linear  — por local/região")
-    print("  [4] Busca Linear  — por nível de risco")
-    print("  [5] Busca Linear  — por período (data)")
-    print("  [6] Busca Linear  — por profundidade (km)")
+    print("  [1] Por magnitude exata")
+    print("  [2] Por intervalo de magnitude")
+    print("  [3] Por local/região")
+    print("  [4] Por nível de risco")
+    print("  [5] Por período (data)")
+    print("  [6] Por profundidade (km)")
 
     op = input("  Opção: ").strip()
 
@@ -159,12 +159,11 @@ def _busca(originais, ordenados, pilha, log):
 
 def _ordenacao(originais, log):
     print("\n  ── ORDENAÇÃO ────────────────────────────────────────────")
-    print("  [1] Merge Sort  — por Magnitude (decrescente)")
-    print("  [2] Merge Sort  — por Profundidade (crescente)")
-    print("  [3] Merge Sort  — por Significância (decrescente)")
-    print("  [4] Merge Sort  — por Data (crescente)")
-    print("  [5] Quick Sort  — por Magnitude")
-    print("  [6] Bubble Sort — por Magnitude (demonstrativo)")
+    print("  [1] Por Magnitude (decrescente)")
+    print("  [2] Por Profundidade (crescente)")
+    print("  [3] Por Significância (decrescente)")
+    print("  [4] Por Data (crescente)")
+    print("  [5] Por Magnitude (crescente)")
 
     op = input("  Opção: ").strip()
     res = originais
@@ -198,10 +197,10 @@ def _ordenacao(originais, log):
 
 
 def _estruturas(eventos, pilha, fila, lista, log):
-    print("\n  ── DEMONSTRAÇÃO DAS ESTRUTURAS DE DADOS ─────────────────")
-    print("  [1] Pilha   — empilhar/desempilhar alertas")
-    print("  [2] Fila    — enfileirar/desenfileirar eventos")
-    print("  [3] Lista L — adicionar/remover região")
+    print("\n  ── ESTRUTURAS DE eventos ─────────────────")
+    print("  [1] empilhar/desempilhar alertas")
+    print("  [2] enfileirar/desenfileirar eventos")
+    print("  [3] adicionar/remover região")
     print("  [4] Ver estado atual de todas as estruturas")
 
     op = input("  Opção: ").strip()
